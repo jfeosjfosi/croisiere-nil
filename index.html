@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Notre croisière sur le Nil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Arc UI tokens (Media Buying Lab). Layout: one reading column; answer first, 4 formulas side by side, then one formula in detail. */
+:root{
+  color-scheme:light;
+  --background:oklch(99.2% .003 80);--surface:oklch(100% 0 0);--surface-muted:oklch(97% .006 80);
+  --foreground:oklch(17% .01 80);--text-secondary:oklch(42% .01 80);--text-muted:oklch(54% .01 80);
+  --border:oklch(92.5% .006 80);--border-strong:oklch(82% .01 80);
+  --accent:oklch(45% .09 230);--accent-subtle:oklch(45% .09 230 / .1);
+  --success:oklch(47% .14 150);--success-subtle:oklch(49% .15 150 / .1);
+  --warning:oklch(50% .12 70);--warning-subtle:oklch(60% .14 75 / .15);
+  --danger:oklch(52% .19 25);--danger-subtle:oklch(52% .19 25 / .1);
+  --shadow-raised:0 6px 18px oklch(0% 0 0 / .065),0 1px 3px oklch(0% 0 0 / .035);
+  --radius-control:1.125rem;--radius-panel:1.625rem;--radius-pill:9999px;
+  --font-display:"Geist",system-ui,sans-serif;--font-body:"Inter",system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --background:oklch(19% .005 80);--surface:oklch(22% .005 80);--surface-muted:oklch(25.5% .006 80);
+  --foreground:oklch(96% .003 80);--text-secondary:oklch(80% .006 80);--text-muted:oklch(66% .006 80);
+  --border:oklch(30% .006 80);--border-strong:oklch(42% .008 80);
+  --accent:oklch(78% .1 230);--accent-subtle:oklch(78% .1 230 / .14);
+  --success:oklch(78% .16 150);--success-subtle:oklch(78% .16 150 / .14);
+  --warning:oklch(83% .15 80);--warning-subtle:oklch(83% .15 80 / .14);
+  --danger:oklch(75% .18 25);--danger-subtle:oklch(75% .18 25 / .14);
+  --shadow-raised:0 8px 22px oklch(0% 0 0 / .3);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --background:oklch(19% .005 80);--surface:oklch(22% .005 80);--surface-muted:oklch(25.5% .006 80);
+  --foreground:oklch(96% .003 80);--text-secondary:oklch(80% .006 80);--text-muted:oklch(66% .006 80);
+  --border:oklch(30% .006 80);--border-strong:oklch(42% .008 80);
+  --accent:oklch(78% .1 230);--accent-subtle:oklch(78% .1 230 / .14);
+  --success:oklch(78% .16 150);--success-subtle:oklch(78% .16 150 / .14);
+  --warning:oklch(83% .15 80);--warning-subtle:oklch(83% .15 80 / .14);
+  --danger:oklch(75% .18 25);--danger-subtle:oklch(75% .18 25 / .14);
+  --shadow-raised:0 8px 22px oklch(0% 0 0 / .3);
+}
+*{box-sizing:border-box}
+body{background:var(--background);color:var(--foreground);font:17px/1.55 var(--font-body);letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+.wrap{max-width:70rem;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:24px 80px;display:grid;gap:80px}
+h1,h2,h3{font-family:var(--font-display);letter-spacing:-.03em;line-height:1.1;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.3rem,6vw,3.8rem);font-weight:600}
+h2{font-size:clamp(1.6rem,3.5vw,2.25rem);font-weight:600}
+h3{font-size:1.3rem;font-weight:600}
+p{margin:0}
+a{color:var(--accent)}
+.eyebrow{font:500 .78rem/1 var(--font-display);text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted)}
+.lead{font-size:1.15rem;color:var(--text-secondary);max-width:62ch}
+.muted{color:var(--text-muted);font-size:.9rem}
+.num{font-variant-numeric:tabular-nums}
+section{display:grid;gap:28px}
+.sec-head{display:grid;gap:10px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:2.75rem;padding:8px 18px;border-radius:var(--radius-pill);border:1px solid var(--border-strong);background:var(--surface);color:var(--foreground);font:500 .92rem var(--font-display);cursor:pointer;text-decoration:none;transition:background .16s var(--ease)}
+.btn:hover{background:var(--surface-muted)}
+.btn.primary{background:var(--foreground);color:var(--background);border-color:var(--foreground)}
+.btn:focus-visible,.tab:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.icon{width:18px;height:18px;flex:none}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:var(--radius-pill);font:500 .8rem var(--font-display);width:fit-content}
+.ok{background:var(--success-subtle);color:var(--success)}
+.mid{background:var(--warning-subtle);color:var(--warning)}
+.no{background:var(--danger-subtle);color:var(--danger)}
+.info{background:var(--accent-subtle);color:var(--accent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.hero-img{border-radius:var(--radius-panel);overflow:hidden;aspect-ratio:4/3;max-width:100%}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-text{display:grid;gap:22px;min-width:0}
+.answer{border:1px solid var(--foreground);background:var(--surface);border-radius:var(--radius-panel);padding:26px;display:grid;gap:14px;box-shadow:var(--shadow-raised)}
+.answer .big{font:600 clamp(2rem,5vw,2.8rem)/1 var(--font-display);letter-spacing:-.04em}
+.facts{display:flex;flex-wrap:wrap;gap:8px}
+@media (max-width:800px){.hero{grid-template-columns:1fr}}
+
+/* overview cards */
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media (max-width:1040px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+.card{border:1px solid var(--border);border-radius:var(--radius-panel);background:var(--surface);overflow:hidden;display:grid;grid-template-rows:auto 1fr;cursor:pointer;text-align:left;font:inherit;color:inherit;padding:0;transition:box-shadow .2s var(--ease),border-color .2s var(--ease)}
+.card:hover{box-shadow:var(--shadow-raised)}
+.card[aria-pressed="true"]{border-color:var(--foreground);box-shadow:var(--shadow-raised)}
+.card .ph{aspect-ratio:16/10;overflow:hidden;max-width:100%}
+.card .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.card .body{padding:18px;display:grid;gap:12px;align-content:start}
+.card .pp{font:600 1.9rem/1 var(--font-display);letter-spacing:-.03em}
+.card .tot{font-size:.88rem;color:var(--text-muted)}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:.9rem}
+.checks li{display:grid;grid-template-columns:20px 1fr;gap:8px;align-items:start}
+.y{color:var(--success)}.x{color:var(--danger)}.q{color:var(--warning)}
+.card .more{font:500 .88rem var(--font-display);color:var(--accent)}
+
+/* detail */
+.detail{border:1px solid var(--border);border-radius:var(--radius-panel);background:var(--surface);padding:clamp(20px,3vw,36px);display:grid;gap:32px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{border:1px solid var(--border-strong);background:var(--surface);color:var(--foreground);border-radius:var(--radius-pill);padding:8px 16px;font:500 .92rem var(--font-display);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--foreground);color:var(--background);border-color:var(--foreground)}
+.dgrid{display:grid;grid-template-columns:1.2fr 1fr;gap:36px}
+@media (max-width:880px){.dgrid{grid-template-columns:1fr}}
+.dgrid > div{min-width:0;display:grid;gap:18px;align-content:start}
+.days{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.days li{display:grid;grid-template-columns:76px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.days li:last-child{border-bottom:0}
+.days .when{font:600 .95rem var(--font-display)}
+.days .when small{display:block;font:400 .8rem var(--font-body);color:var(--text-muted)}
+.days .what{display:grid;gap:4px;font-size:.95rem}
+.fl{display:inline-flex;gap:6px;align-items:center;flex-wrap:wrap;font:500 .85rem var(--font-display);background:var(--accent-subtle);color:var(--accent);padding:3px 10px;border-radius:var(--radius-pill);width:fit-content}
+.boatday .when{color:var(--accent)}
+.bill{display:grid;gap:0;border:1px solid var(--border);border-radius:var(--radius-control);overflow:hidden}
+.bill div{display:flex;justify-content:space-between;gap:14px;padding:11px 16px;border-bottom:1px solid var(--border);font-size:.94rem}
+.bill div span:first-child{min-width:0}
+.bill div span:last-child{white-space:nowrap}
+.bill div small{display:block;color:var(--text-muted);font-size:.8rem}
+.bill .sum{background:var(--surface-muted);font:600 1.15rem var(--font-display);border-bottom:0}
+.bill .pers{font:500 .95rem var(--font-display);color:var(--text-secondary);border-bottom:0;background:var(--surface-muted);padding-top:0}
+.box{background:var(--surface-muted);border-radius:var(--radius-control);padding:16px;display:grid;gap:8px;font-size:.93rem}
+.book{display:grid;gap:20px;border-top:1px solid var(--border);padding-top:28px;scroll-margin-top:16px}
+.bsteps{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.bsteps li{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start;border:1px solid var(--border);border-radius:var(--radius-control);padding:16px}
+.bsteps li > div{display:grid;gap:8px;min-width:0}
+.bsteps .n{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--foreground);color:var(--background);font:600 1.05rem var(--font-display)}
+
+/* comparison table */
+.tbl{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-panel);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.92rem}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--border);vertical-align:top}
+thead th{font:600 .95rem var(--font-display)}
+tbody th{font:500 .78rem var(--font-display);text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);white-space:nowrap}
+tr:last-child td,tr:last-child th{border-bottom:0}
+
+/* tips, reserve, todo */
+.tips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.tips{grid-template-columns:1fr}}
+.tip{border:1px solid var(--border);border-radius:var(--radius-control);padding:18px;display:grid;gap:6px;background:var(--surface)}
+.tip b{font-family:var(--font-display)}
+.todo{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.todo label{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--border);border-radius:var(--radius-control);padding:14px 16px;background:var(--surface);cursor:pointer}
+.todo input{width:20px;height:20px;margin-top:3px;accent-color:var(--success);flex:none}
+.todo input:checked + span{text-decoration:line-through;color:var(--text-muted)}
+.mail{white-space:pre-wrap;font:14px/1.6 ui-monospace,"SF Mono",monospace;background:var(--surface-muted);border-radius:var(--radius-control);padding:20px;max-height:380px;overflow:auto;margin:0}
+footer{font-size:.84rem;color:var(--text-muted);display:grid;gap:6px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-y" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-q" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17" r="1.1" fill="currentColor"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M21 15.5l-8-4.5V5.5a1.5 1.5 0 0 0-3 0V11l-8 4.5V17l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-4.5l8 2.5z" fill="currentColor"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+</svg>
+
+<div class="wrap">
+
+<header class="row">
+  <span class="eyebrow">Égypte · 3 adultes · du 5 au 11 novembre 2026</span>
+  <button class="btn" id="theme" type="button"><svg class="icon"><use href="#i-moon"/></svg>Clair / sombre</button>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Notre croisière sur le Nil</h1>
+    <p class="lead">Nous avons comparé une trentaine de croisières, les avis des voyageurs et tous les vols. Voici la meilleure formule, avec le prix complet : bateau, avions, hôtels, entrées et pourboires.</p>
+    <div class="answer">
+      <span class="pill ok"><svg class="icon"><use href="#i-y"/></svg>Notre choix</span>
+      <h3>Dahabieh Anoush, du vendredi 6 au mardi 10 novembre</h3>
+      <div><span class="big num">≈ 1 500 €</span> <span class="muted">par personne, tout compris (≈ 4 500 € pour 3)</span></div>
+      <div class="facts">
+        <span class="pill ok">Guide français</span><span class="pill ok">Petit voilier</span><span class="pill ok">Date confirmée par devis</span><span class="pill ok">Retour au Caire le 10 au soir</span>
+      </div>
+      <div class="row" style="justify-content:flex-start"><a class="btn primary" href="#reserver" data-go="0">Réserver cette formule</a><a class="btn" href="#formules">Voir les 4 formules</a></div>
+      <p class="muted">Moins cher mais sur un grand bateau : Civitatis, ≈ 830 € par personne.</p>
+    </div>
+  </div>
+  <div class="hero-img"><img src="img/dahabieh2.jpg" alt="Une dahabieh, voilier traditionnel du Nil, au coucher du soleil"></div>
+</section>
+
+<section id="formules">
+  <div class="sec-head">
+    <span class="eyebrow">Les 4 formules</span>
+    <h2>Le prix complet de chaque formule, de Dahab jusqu'au Caire</h2>
+    <p class="lead">Le prix comprend la croisière, les avions, les nuits d'hôtel, les entrées des temples et les pourboires. Cliquez sur une formule : son programme heure par heure et les boutons pour la réserver s'affichent en dessous.</p>
+  </div>
+  <div class="cards" id="cards"></div>
+</section>
+
+<section id="detail-sec">
+  <div class="detail">
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div id="detail"></div>
+  </div>
+</section>
+
+<section id="savoir">
+  <div class="sec-head">
+    <span class="eyebrow">Ce que disent les voyageurs</span>
+    <h2>Bon à savoir avant de réserver</h2>
+    <p class="lead">Repris des forums Routard et des avis TripAdvisor, Viator et Civitatis de 2024 à 2026.</p>
+  </div>
+  <div class="tips">
+    <div class="tip"><b>Le bateau avance surtout au remorqueur</b><p class="muted">Sur 3 nuits, les dahabiehs sont souvent tirées par un petit remorqueur, car le vent ne suffit pas. C'est normal et ça ne gâche pas le voyage.</p></div>
+    <div class="tip"><b>3 nuits, c'est 2 vraies journées</b><p class="muted">On embarque à midi et on débarque tôt le dernier jour. D'où l'intérêt de garder la journée du 10 à Louxor.</p></div>
+    <div class="tip"><b>Faire écrire la ville d'arrivée</b><p class="muted">Plusieurs « Assouan → Louxor » s'arrêtent en fait à Esna, à une heure de route. Demandez-le par écrit.</p></div>
+    <div class="tip"><b>Payer par carte bancaire</b><p class="muted">Évitez les virements à des agences revendeuses. Une carte bancaire permet de contester en cas de problème.</p></div>
+    <div class="tip"><b>Pourboires</b><p class="muted">Comptez 10 à 20 $ par personne et par nuit pour l'équipage, dans une enveloppe remise au capitaine. Ils sont inclus chez Civitatis.</p></div>
+    <div class="tip"><b>Météo début novembre</b><p class="muted">Environ 28 à 31 °C le jour et 16 à 20 °C la nuit, sans pluie. Prévoir une petite laine pour le soir sur le pont.</p></div>
+  </div>
+</section>
+
+<section id="reserve">
+  <div class="sec-head">
+    <span class="eyebrow">En réserve</span>
+    <h2>Si nos formules sont complètes</h2>
+  </div>
+  <div class="tips">
+    <div class="tip"><span class="pill info">Le plus authentique</span><b>Sail the Nile · voiliers de 10 à 14 personnes</b><p class="muted">Vrais petits voiliers, récompensés par TripAdvisor en 2026 (Travelers' Choice). Départ le vendredi d'Assouan, arrivée à Esna (1 h de Louxor). Prix sur demande, environ 1 000 à 1 200 € par personne selon des sites tiers. Guide anglais.</p><a href="https://sail-the-nile.com" target="_blank" rel="noopener">sail-the-nile.com</a></div>
+    <div class="tip"><span class="pill info">Cabine triple</span><b>Swan Dahabiya</b><p class="muted">La seule offre avec une cabine triple pour 3 : 1 209 $ par personne, soit ≈ 3 155 € pour 3, entrées incluses, départ le vendredi. Guide anglais, aucun avis indépendant trouvé.</p><a href="https://swandahabiya.com/product/aswan-to-luxor/" target="_blank" rel="noopener">swandahabiya.com</a></div>
+    <div class="tip"><span class="pill no">Écarté</span><b>Filovent (devis reçu)</b><p class="muted">Bateau de 128 passagers qui finit le 11 à Assouan, incompatible avec le vol du 11.</p></div>
+    <div class="tip"><span class="pill no">Écartés</span><b>Steam Ship Sudan, Sun Boat III, Amoura</b><p class="muted">Magnifiques, mais de 5 500 € à plus de 13 000 € pour 3, ou sans départ à nos dates.</p></div>
+  </div>
+</section>
+
+<footer>
+  <span>Prix relevés le 15 octobre 2026 sur les sites des compagnies, Kayak (vols et hôtels) et Civitatis. Ils peuvent bouger : ils sont confirmés au moment de payer. 1 $ ≈ 0,87 €, 1 € ≈ 59 livres égyptiennes.</span>
+  <span>Non compté dans les prix : la nuit du 10 au Caire (déjà dans votre planning), les boissons, les achats et le visa.</span>
+  <span>Le 5 novembre, les deux vols sont des billets séparés avec 3h55 de marge au Caire. En cas de retard, il reste des vols Le Caire → Assouan plus tard le soir.</span>
+  <span>Photos : Wikimedia Commons, licences libres.</span>
+</footer>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  try{root.setAttribute('data-theme',localStorage.getItem('nil-theme')||'light')}catch(e){root.setAttribute('data-theme','light')}
+  document.getElementById('theme').addEventListener('click',function(){
+    var n=root.getAttribute('data-theme')==='dark'?'light':'dark';root.setAttribute('data-theme',n);
+    try{localStorage.setItem('nil-theme',n)}catch(e){}
+  });
+
+  var K='https://www.kayak.fr/flights/';
+  var FL={
+    ssh_cai:{t:'Jeu. 5 · 14h10 → 15h20',d:'Sharm → Le Caire · Nile Air · direct',p:89,u:K+'SSH-CAI/2026-11-05/3adults'},
+    cai_asw:{t:'Jeu. 5 · 19h15 → 20h40',d:'Le Caire → Assouan · EgyptAir · direct',p:138,u:K+'CAI-ASW/2026-11-05/3adults'},
+    ssh_asw6:{t:'Ven. 6 · 10h00 → 15h00',d:'Sharm → Assouan · Air Cairo · escale au Caire',p:172,u:K+'SSH-ASW/2026-11-06/3adults'},
+    lxr_cai:{t:'Mar. 10 · 17h30 → 18h35',d:'Louxor → Le Caire · Air Cairo · direct',p:120,u:K+'LXR-CAI/2026-11-10/3adults'}
+  };
+  var H={
+    asw5:{d:'Hôtel à Assouan · nuit du jeudi 5',u:'https://www.kayak.fr/hotels/Assouan,Egypte-c40872/2026-11-05/2026-11-06/3adults/2rooms'},
+    asw6:{d:'Hôtel à Assouan · nuit du vendredi 6',u:'https://www.kayak.fr/hotels/Assouan,Egypte-c40872/2026-11-06/2026-11-07/3adults/2rooms'},
+    lxr9:{d:'Hôtel à Louxor · nuit du lundi 9',u:'https://www.kayak.fr/hotels/Louxor,Egypte-c22396/2026-11-09/2026-11-10/3adults/2rooms'}
+  };
+  function mail(to,boat){
+    var b='Bonjour,\n\nNous sommes 3 adultes et souhaitons votre croisière '+boat+' d\'Assouan à Louxor au départ du vendredi 6 novembre 2026. Nous prenons un vol Louxor → Le Caire le mardi 10 novembre à 17h30.\n\nPourriez-vous nous confirmer :\n1. la disponibilité pour 1 cabine double + 1 cabine individuelle (ou une triple) ;\n2. le prix total TTC pour les 3, en euros ;\n3. que le guide parle français (et son coût éventuel) ;\n4. si les entrées des sites sont incluses, sinon leur prix ;\n5. la ville et l\'heure exactes de débarquement ;\n6. le nombre maximum de passagers ce jour-là ;\n7. le paiement par carte bancaire et les conditions d\'annulation.\n\nMerci d\'avance,\n';
+    return 'mailto:'+to+'?subject='+encodeURIComponent('Croisière Assouan → Louxor, départ vendredi 6 novembre 2026, 3 adultes')+'&body='+encodeURIComponent(b);
+  }
+  var Y='y',X='x',Q='q';
+  var F=[
+    {id:'anoush',name:'Anoush',sub:'Dahabieh · ven. 6 → mar. 10',img:'img/dahabieh.jpg',badge:['ok','Notre choix'],
+     total:4496,more:'',
+     checks:[[Y,'Guide français'],[Y,'Petit voilier (16 cabines)'],[Y,'Hôtel 4★ à Louxor inclus'],[X,'Entrées en plus (≈ 57 €/pers)']],
+     boat:'Dahabieh de 15 à 16 cabines, 32 passagers au plus selon un revendeur',guide:'Français',fees:'Non incluses, ajoutées au prix ci-contre',sites:'Philae, Kom Ombo, Silsila, Edfou, Vallée des Rois, Hatchepsout, Karnak',reviews:'TripAdvisor : avis 2026 très majoritairement positifs (cuisine, équipage, petit groupe). GetYourGuide : 5 étoiles. Critiques : prix élevé, « 2 vraies journées à bord », eau chaude et wifi.',
+     bill:[['Croisière (devis n°3100003)','Cabine double + cabine individuelle, pension complète, guide, transferts, 1 nuit d\'hôtel à Louxor',3000],['Entrées des sites','Tarifs officiels 2026 · 57 € × 3 (≈ 77 € par pers. avec la tombe de Toutânkhamon)',171],['Avions du 5 novembre','Sharm → Le Caire → Assouan · 227 € × 3',681],['Avion du 10 novembre','Louxor → Le Caire · 120 € × 3',360],['Hôtel à Assouan, nuit du 5','Hapi Hotel 3★, 2 chambres, petit-déjeuner',136],['Pourboires','Notre estimation : 12 € par personne et par nuit',108],['Taxi Dahab → aéroport de Sharm','Environ 1h15 de route · estimation',40]],
+     days:[['Jeu. 5','Départ de Dahab',['Taxi vers l\'aéroport de Sharm, départ vers 11h30.'],['ssh_cai','cai_asw'],'Nuit à l\'hôtel à Assouan.'],
+       ['Ven. 6','Assouan',['Accueil et transfert à la dahabieh. Visite du temple de Philae.'],[],'Nuit à bord.',1],
+       ['Sam. 7','Navigation',['Navigation sur le Nil, temple de Kom Ombo.'],[],'Nuit à bord.',1],
+       ['Dim. 8','Silsila, Edfou',['Carrières de Gebel el-Silsila, village local, temple d\'Edfou.'],[],'Nuit à bord.',1],
+       ['Lun. 9','Louxor',['Arrivée à Louxor. Vallée des Rois, temple d\'Hatchepsout, Colosses de Memnon.'],[],'Nuit à l\'hôtel 4★ (inclus).'],
+       ['Mar. 10','Louxor → Le Caire',['Temple de Karnak le matin, puis transfert à l\'aéroport.'],['lxr_cai'],'Nuit au Caire.'],
+       ['Mer. 11','Retour',['Vol Le Caire → Marseille à 13h00.'],[],'']],
+     cruise:{t:'Confirmer la croisière auprès d\'Anoush',s:'Le bouton ouvre un mail déjà rédigé. Booking@anoushdahabiya.com · +20 109 834 7436 · rappeler le devis n°3100003.',b:[[mail('Booking@anoushdahabiya.com','en dahabiya (devis n°3100003)'),'Écrire à Anoush'],['https://anoushdahabiya.com/fr/our-trips/4-nights-5-days-nile-dahabiya-including-tours-from-aswan-to-luxor','Voir leur site']]},hotels:['asw5']},
+
+    {id:'golavita',name:'Golavita',sub:'Dahabieh Mahrosa · ven. 6 → lun. 9',img:'img/abousimbel.jpg',badge:['info','Le plus de visites'],
+     total:4225,more:'sans la cabine individuelle (non publiée)',
+     checks:[[Y,'Entrées incluses'],[Y,'Abou Simbel inclus'],[Y,'Bateau neuf, 20 pers. max'],[Q,'Langue du guide à confirmer']],
+     boat:'Dahabieh neuve, 12 cabines, 20 passagers au plus',guide:'Égyptologue diplômé, langue à confirmer',fees:'Incluses',sites:'Abou Simbel, Kom Ombo, Edfou, Vallée des Rois, Hatchepsout, Memnon, Karnak',reviews:'Agence notée 4,9/5 sur TripAdvisor (83 avis, capture du PDF Golavita), dont un avis d\'avril 2026 sur leur autre dahabieh. Aucun avis trouvé sur le bateau Mahrosa lui-même.',
+     bill:[['Croisière','3 × 1 075 $, pension complète, guide, entrées, transferts',2806],['Supplément cabine individuelle','Non publié. Chez les autres bateaux il ajoute 40 à 75 % : le total monterait à ≈ 4 600 à 4 950 €',null],['Avions du 5 novembre','Sharm → Le Caire → Assouan · 227 € × 3',681],['Avion du 10 novembre','Louxor → Le Caire · 120 € × 3',360],['Hôtel à Assouan, nuit du 5','Hapi Hotel 3★, 2 chambres',136],['Hôtel à Louxor, nuit du 9','El Gezira 3★, noté 8,9/10, 2 chambres',94],['Pourboires','Notre estimation : 12 € par personne et par nuit',108],['Taxi Dahab → aéroport de Sharm','Estimation',40]],
+     days:[['Jeu. 5','Départ de Dahab',['Taxi vers l\'aéroport de Sharm, départ vers 11h30.'],['ssh_cai','cai_asw'],'Nuit à l\'hôtel à Assouan.'],
+       ['Ven. 6','Assouan',['Embarquement sur la dahabieh Mahrosa.'],[],'Nuit à bord.',1],
+       ['Sam. 7','Abou Simbel',['Excursion aux temples d\'Abou Simbel (incluse), puis navigation.'],[],'Nuit à bord.',1],
+       ['Dim. 8','Kom Ombo, Edfou',['Temples de Kom Ombo et d\'Edfou, navigation jusqu\'à Louxor.'],[],'Nuit à bord.',1],
+       ['Lun. 9','Louxor',['Vallée des Rois, Hatchepsout, Colosses de Memnon, Karnak. Débarquement.'],[],'Nuit à l\'hôtel El Gezira.'],
+       ['Mar. 10','Louxor → Le Caire',['Journée libre : temple de Louxor, ou montgolfière à l\'aube (≈ 120 €/pers).'],['lxr_cai'],'Nuit au Caire.'],
+       ['Mer. 11','Retour',['Vol Le Caire → Marseille à 13h00.'],[],'']],
+     cruise:{t:'Demander la place à Golavita',s:'Sur leur page, bouton bleu « Vérifier la disponibilité » ou WhatsApp. Demander : le vendredi 6, le prix avec une cabine individuelle, un guide français.',b:[['https://golavita.net/package/dahabiya-nile-cruise-aswan-to-luxor-3-nights-4-days-mahrosa/','Ouvrir l\'offre Golavita']]},hotels:['asw5','lxr9']},
+
+    {id:'nile',name:'Nile Sailing',sub:'Dahabieh · ven. 6 → lun. 9',img:'img/komombo.jpg',badge:['mid','Le moins cher en dahabieh'],
+     total:4030,more:'+ visites de Louxor à organiser',
+     checks:[[Y,'Entrées incluses'],[Y,'20 pers. max'],[X,'Guide anglais'],[X,'Ni Philae ni Vallée des Rois']],
+     boat:'Dahabieh, 20 passagers au plus',guide:'Anglais (autres langues sur demande)',fees:'Incluses pendant la croisière',sites:'Daraw, Kom Ombo, Silsila, île de Bisaw, Edfou, Esna',reviews:'Trustpilot : 4,3/5 sur 7 avis. Peu d\'avis publics.',
+     bill:[['Croisière','2 × 670 € (cabine double) + 1 180 € (cabine individuelle)',2520],['Entrées à Louxor','Vallée des Rois, Hatchepsout, Karnak · ≈ 30 € × 3',91],['Avions du 5 novembre','227 € × 3',681],['Avion du 10 novembre','120 € × 3',360],['Hôtel à Assouan, nuit du 5','Hapi Hotel 3★',136],['Hôtel à Louxor, nuit du 9','El Gezira 3★',94],['Pourboires','Notre estimation : 12 € par personne et par nuit',108],['Taxi Dahab → aéroport de Sharm','Estimation',40],['Guide et voiture à Louxor','À organiser vous-mêmes',null]],
+     days:[['Jeu. 5','Départ de Dahab',['Taxi vers l\'aéroport de Sharm.'],['ssh_cai','cai_asw'],'Nuit à l\'hôtel à Assouan.'],
+       ['Ven. 6','Assouan',['Embarquement vers midi, navigation.'],[],'Nuit à bord.',1],
+       ['Sam. 7','Kom Ombo',['Marché de Daraw, temple de Kom Ombo, Gebel el-Silsila.'],[],'Nuit à bord.',1],
+       ['Dim. 8','Edfou',['Île de Bisaw, temple d\'Edfou, navigation vers Esna.'],[],'Nuit à bord.',1],
+       ['Lun. 9','Esna → Louxor',['Débarquement à Esna après le petit-déjeuner, 1 h de route jusqu\'à Louxor.'],[],'Nuit à l\'hôtel El Gezira.'],
+       ['Mar. 10','Louxor → Le Caire',['Vallée des Rois et Karnak, à organiser vous-mêmes.'],['lxr_cai'],'Nuit au Caire.'],
+       ['Mer. 11','Retour',['Vol Le Caire → Marseille à 13h00.'],[],'']],
+     cruise:{t:'Vérifier le départ du 6 auprès de Nile Sailing',s:'Le bouton ouvre un mail déjà rédigé. info@dahabiyanilesailing.com · +20 121 144 4244. Prévoir ensuite un guide pour Louxor.',b:[[mail('info@dahabiyanilesailing.com','en dahabiya'),'Écrire à Nile Sailing'],['https://dahabiyanilesailing.com/dahabiya-sailing-on-the-nile-aswan-to-luxor-4-days-3-nights/','Voir leur site']]},hotels:['asw5','lxr9']},
+
+    {id:'civitatis',name:'Civitatis',sub:'Grand bateau 5★ · sam. 7 → mar. 10',img:'img/grandbateau.jpg',badge:['info','Le moins cher, guide français'],
+     total:2486,more:'(prix en cabine double, à confirmer pour 3)',
+     checks:[[Y,'Guide français'],[Y,'Entrées et pourboires inclus'],[Y,'Annulation gratuite jusqu\'à 48 h avant'],[X,'Grand bateau (100 pers. et plus)']],
+     boat:'Grand bateau de croisière 5★, attribué une semaine avant le départ',guide:'Français',fees:'Incluses (sauf la tombe de Toutânkhamon : 12 €)',sites:'Philae, Kom Ombo, Edfou, Louxor, Karnak, Vallée des Rois (3 tombes), Hatchepsout, Memnon',reviews:'7,4/10 sur 1 674 avis Civitatis. Les avis citent un bon guide et un beau bateau. Abou Simbel en option (≈ 76 €).',
+     bill:[['Croisière','3 × 477,95 € (« à partir de »), pension complète, guide, entrées, pourboires, transferts. Pour 3 personnes, le prix peut monter jusqu\'à ≈ 1 625 €',1434],['Avion du 6 novembre','Sharm → Assouan · 172 € × 3',516],['Avion du 10 novembre','Louxor → Le Caire · 120 € × 3',360],['Hôtel à Assouan, nuit du 6','Hapi Hotel 3★ · estimé au prix du 5',136],['Taxi Dahab → aéroport de Sharm','Estimation',40]],
+     days:[['Jeu. 5','Dahab',['Dernière nuit à Dahab, comme prévu.'],[],''],
+       ['Ven. 6','Dahab → Assouan',['Taxi vers l\'aéroport de Sharm, départ vers 7h30.'],['ssh_asw6'],'Nuit à l\'hôtel à Assouan.'],
+       ['Sam. 7','Assouan',['Prise en charge à l\'hôtel, embarquement, temple de Philae.'],[],'Nuit à bord.',1],
+       ['Dim. 8','Kom Ombo',['Abou Simbel le matin en option, navigation, Kom Ombo au coucher du soleil.'],[],'Nuit à bord.',1],
+       ['Lun. 9','Edfou, Louxor',['Edfou en calèche, écluse d\'Esna, temples de Louxor et de Karnak.'],[],'Nuit à bord.',1],
+       ['Mar. 10','Louxor → Le Caire',['Départ du bateau vers 6h, Vallée des Rois, Hatchepsout, Memnon, puis transfert.'],['lxr_cai'],'Nuit au Caire.'],
+       ['Mer. 11','Retour',['Vol Le Caire → Marseille à 13h00.'],[],'']],
+     cruise:{t:'Réserver la croisière sur Civitatis',s:'Paiement en ligne par carte. Dans le calendrier, choisir le samedi 7 novembre et 3 personnes. Annulation gratuite jusqu\'à 48 h avant.',b:[['https://www.civitatis.com/fr/assouan/croisiere-nil-3-nuits-asuan-louxor/','Réserver sur Civitatis']]},hotels:['asw6']}
+  ];
+
+  function eur(n){return Math.round(n).toLocaleString('fr-FR')+' €'}
+  function ic(k){return '<svg class="icon '+k+'"><use href="#i-'+k+'"/></svg>'}
+  var cur=0;
+
+  document.getElementById('cards').innerHTML=F.map(function(f,i){
+    return '<button class="card" type="button" data-i="'+i+'" aria-pressed="'+(i===0)+'"><div class="ph"><img src="'+f.img+'" alt="" loading="lazy"></div><div class="body">'+
+      '<span class="pill '+f.badge[0]+'">'+f.badge[1]+'</span><div><h3>'+f.name+'</h3><span class="muted">'+f.sub+'</span></div>'+
+      '<div><div class="pp num">≈ '+eur(f.total/3)+'</div><div class="tot">par personne · '+eur(f.total)+' pour 3'+(f.more?' '+f.more:'')+'</div></div>'+
+      '<ul class="checks">'+f.checks.map(function(c){return '<li>'+ic(c[0])+'<span>'+c[1]+'</span></li>'}).join('')+'</ul>'+
+      '<span class="more">Voir le programme et le détail</span></div></button>';
+  }).join('');
+  document.getElementById('tabs').innerHTML=F.map(function(f,i){return '<button class="tab" role="tab" type="button" data-i="'+i+'" aria-selected="'+(i===0)+'">'+f.name+'</button>'}).join('');
+
+  function render(i){
+    cur=i;var f=F[i];
+    document.querySelectorAll('.card').forEach(function(c){c.setAttribute('aria-pressed',+c.dataset.i===i)});
+    document.querySelectorAll('.tab').forEach(function(c){c.setAttribute('aria-selected',+c.dataset.i===i)});
+    var days=f.days.map(function(d){
+      var fl=d[3].map(function(k){var x=FL[k];return '<span class="fl">'+ic('plane')+x.t+' · '+x.d+'</span>'}).join('');
+      return '<li class="'+(d[5]?'boatday':'')+'"><span class="when">'+d[0]+'<small>'+d[1]+'</small></span><span class="what"><span>'+d[2].join(' ')+'</span>'+fl+(d[4]?'<span class="muted">'+d[4]+'</span>':'')+'</span></li>';
+    }).join('');
+    var bill=f.bill.map(function(b){return '<div><span>'+b[0]+'<small>'+b[1]+'</small></span><span class="num">'+(b[2]===null?'à demander':eur(b[2]))+'</span></div>'}).join('');
+    var flights={};f.days.forEach(function(d){d[3].forEach(function(k){flights[k]=1})});
+    document.getElementById('detail').innerHTML=
+      '<div class="dgrid"><div><div><span class="eyebrow">Programme jour par jour</span><h2>'+f.name+' · '+f.sub.split(' · ')[1]+'</h2></div><ul class="days">'+days+'</ul></div>'+
+      '<div><span class="eyebrow">Le prix complet, ligne par ligne</span><div class="bill">'+bill+
+      '<div class="sum"><span>Total pour 3</span><span class="num">'+eur(f.total)+(f.more?' +':'')+'</span></div><div class="pers"><span>Par personne</span><span class="num">'+eur(f.total/3)+'</span></div></div>'+
+      '<div class="box"><b>Le bateau</b><span>'+f.boat+'</span><b>Guide</b><span>'+f.guide+'</span><b>Entrées</b><span>'+f.fees+'</span><b>Avis</b><span>'+f.reviews+'</span></div>'+
+      '</div></div>'+booking(f,flights);
+  }
+  function a(h,t,p){return '<a class="btn'+(p?' primary':'')+'" href="'+h+'"'+(h.indexOf('mailto:')?' target="_blank" rel="noopener"':'')+'>'+t+(h.indexOf('mailto:')?' '+ic('ext'):'')+'</a>'}
+  function booking(f,flights){
+    var st=[[f.cruise.t,f.cruise.s,f.cruise.b.map(function(b,i){return a(b[0],b[1],i===0)}).join('')]];
+    Object.keys(flights).forEach(function(k){var x=FL[k];st.push(['Réserver l\'avion du '+x.t.split(' · ')[0].replace('Jeu.','jeudi').replace('Ven.','vendredi').replace('Mar.','mardi'),x.d+' · '+x.t.split(' · ')[1]+' · ≈ '+x.p+' € par personne. La recherche s\'ouvre déjà réglée sur la date et 3 adultes : choisir ce vol dans la liste.',a(x.u,'Voir les vols',0)])});
+    f.hotels.forEach(function(k){var h=H[k];st.push(['Réserver l\''+h.d.charAt(0).toLowerCase()+h.d.slice(1),'2 chambres pour 3, déjà réglé sur la bonne date. Prendre un hôtel avec annulation gratuite.',a(h.u,'Voir les hôtels',0)])});
+    return '<div id="reserver" class="book"><div><span class="eyebrow">Pour réserver cette formule</span><h2>'+st.length+' étapes, dans cet ordre</h2><p class="muted">Réserver le bateau d\'abord, puis les avions et l\'hôtel une fois la place confirmée.</p></div><ol class="bsteps">'+
+      st.map(function(x,i){return '<li><span class="n num">'+(i+1)+'</span><div><b>'+x[0]+'</b><p class="muted">'+x[1]+'</p><div class="row" style="justify-content:flex-start">'+x[2]+'</div></div></li>'}).join('')+'</ol></div>';
+  }
+  document.addEventListener('click',function(e){var g=e.target.closest('[data-go]');if(!g)return;e.preventDefault();render(+g.dataset.go);document.getElementById('reserver').scrollIntoView({behavior:'smooth',block:'start'})});
+  function go(e){var b=e.target.closest('[data-i]');if(!b)return;render(+b.dataset.i);if(b.classList.contains('card'))document.getElementById('detail-sec').scrollIntoView({behavior:'smooth',block:'start'})}
+  document.getElementById('cards').addEventListener('click',go);
+  document.getElementById('tabs').addEventListener('click',go);
+  render(0);
+
+})();
+</script>
+</body>
+</html>
